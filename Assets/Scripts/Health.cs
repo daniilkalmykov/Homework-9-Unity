@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Health : MonoBehaviour
@@ -5,6 +6,8 @@ public class Health : MonoBehaviour
     private const float MinHealthDifference = 1;
     
     [SerializeField] private float _maxHealth;
+
+    public event Action HealthChanged;
     
     private float _currentHealth;
     private float _minHealth;
@@ -27,14 +30,16 @@ public class Health : MonoBehaviour
     public void TakeDamage(float damage)
     {
         _currentHealth -= damage;
-        
         _currentHealth = Mathf.Clamp(_currentHealth, _minHealth, _maxHealth);
+        
+        HealthChanged?.Invoke();        
     }
 
     public void Heal(float health)
     {
         _currentHealth += health;
-        
         _currentHealth = Mathf.Clamp(_currentHealth, _minHealth, _maxHealth);
+        
+        HealthChanged?.Invoke();
     }
 }

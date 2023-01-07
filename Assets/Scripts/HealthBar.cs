@@ -13,6 +13,16 @@ public class HealthBar : MonoBehaviour
         _slider = GetComponent<Slider>();
     }
 
+    private void OnEnable()
+    {
+        _health.HealthChanged += OnHealthChanged;
+    }
+
+    private void OnDisable()
+    {
+        _health.HealthChanged -= OnHealthChanged;
+    }
+
     private void Start()
     {
         _slider.maxValue = _health.MaxHealth;
@@ -20,7 +30,7 @@ public class HealthBar : MonoBehaviour
         _slider.value = _health.CurrentHealth;
     }
 
-    public void OnHealthChanged()
+    private void OnHealthChanged()
     {
         _slider.value = _health.CurrentHealth;
     }
