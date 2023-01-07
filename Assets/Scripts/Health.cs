@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Health : MonoBehaviour
 {
-    private const float MinMaximalHealth = 1;
+    private const float MinHealthDifference = 1;
     
     [SerializeField] private float _maxHealth;
     
@@ -15,8 +15,8 @@ public class Health : MonoBehaviour
 
     private void OnValidate()
     {
-        if (_maxHealth < MinHealth)
-            _maxHealth = MinHealth;
+        if (_maxHealth <= MinHealth)
+            _maxHealth = MinHealth + MinHealthDifference;
     }
 
     private void Awake()
