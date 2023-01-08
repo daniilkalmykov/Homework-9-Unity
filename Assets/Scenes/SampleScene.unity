@@ -638,6 +638,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _health: {fileID: 678877370}
+  _speed: 20
 --- !u!1 &1160834712
 GameObject:
   m_ObjectHideFlags: 0

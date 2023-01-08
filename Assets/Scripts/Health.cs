@@ -27,6 +27,11 @@ public class Health : MonoBehaviour
         _currentHealth = _maxHealth;
     }
 
+    private void Update()
+    {
+        print(_currentHealth);
+    }
+
     public void TakeDamage(float damage)
     {
         _currentHealth -= damage;
@@ -37,7 +42,7 @@ public class Health : MonoBehaviour
 
     public void Heal(float health)
     {
-        _currentHealth += health;
+        _currentHealth += health; 
         _currentHealth = Mathf.Clamp(_currentHealth, _minHealth, _maxHealth);
         
         HealthChanged?.Invoke();
